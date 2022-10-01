@@ -1,0 +1,307 @@
+[
+    {
+        "name": "Grilled Calamari",
+        "ingredients": ["crispy fried tentacles", "jalapeños", "cilantro", "whipped avocado"],
+        "price": 15,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Crispy Calamari",
+        "ingredients": ["honey sambal dipping sauce"],
+        "price": 15,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Charred Octopus",
+        "ingredients": ["roasted garlic white bean puree", "piquillo peppers", "cherry tomatoes", "avocado"],
+        "price": 19,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Short Rib Mac & Cheese",
+        "ingredients": ["slope farms all-natural grass fed braised short ribs", "cavatelli", "cabot white cheddar", "toasted bread crumbs"],
+        "price": 15,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Pilsner Steamed Mussels",
+        "ingredients": "pilsner, tomatoes, pancetta, garlic, scallions, parmesan",
+        "price": 14,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "House-Made Meatballs",
+        "ingredients": "all-natural grass fed beef, basil, oregano, fresh tomato sauce, parmesan cheese crostini",
+        "price": 14,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Shrimp & Grits",
+        "ingredients": "grilled shrimp, parmesan, polenta, spicy pesto",
+        "price": 19,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Jumbo Lump Crab Cake",
+        "ingredients": "avocado puree, marinated tomatoes, lettuce",
+        "price": 19,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Lamb Lollipops",
+        "ingredients": "arugula salad, mint yogurt, harissa sauce",
+        "price": 23,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Harvest Sliders",
+        "ingredients": "slope farms all natural grass fed beef, brioche bun, tomato aioli, fries",
+        "price": 17,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Crispy Artichokes",
+        "ingredients": "lemon aioli, jalapeños, cilantro, red onions, ricotta salata cheese",
+        "price": 14,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Roasted Mushrooms",
+        "ingredients": "spinach, soft poached egg, crispy polenta cake, parmesan                ",
+        "price": 13,
+        "section": "Snacks & Shares"
+    },
+    {
+        "name": "Beet & Goat Cheese Croquettes",
+        "ingredients": "beet cream sauce, baby arugula, beet almond chimichurri",
+        "price": 14,
+        "section": "Starter"
+    },
+    {
+        "name": "Spicy Salmon Tartare",
+        "ingredients": "jalapeño, lemon zest, baby arugula, house made chips",
+        "price": 13,
+        "section": "Starter"
+    },
+    {
+        "name": "Steak Tartar",
+        "ingredients": "all-natural grass fed beef, truffle, parmesan, quail egg, grilled bread",
+        "price": 15,
+        "section": "Starter"
+    },
+    {
+        "name": "Lobster Bisque",
+        "ingredients": "black truffle, melted leeks, lobster chunk",
+        "price": 10,
+        "section": "Starter"
+    },
+    {
+        "name": "Shaved Brussels Sprout Salad",
+        "ingredients": "parmesan risotto cake, truffle vinaigrette",
+        "price": 13,
+        "section": "Starter"
+    },
+    {
+        "name": "Salad Of Organic Mixed Greens",
+        "ingredients": "balsamic vinaigrette, cherry tomatoes, goat cheese",
+        "price": 10,
+        "section": "Starter"
+    },
+    {
+        "name": "Chopped Salad",
+        "ingredients": "romaine, radiccio, radish, cucumbers, black olives, citrus creamy dressing",
+        "price": 12,
+        "section": "Starter"
+    },
+    {
+        "name": "Bibb Salad",
+        "ingredients": "dried fruit, shaved red onion, spiced walnuts, maytag blue cheese, balsamic dressing",
+        "price": 12,
+        "section": "Starter"
+    },
+    {
+        "name": "Caesar Salad",
+        "ingredients": "romaine hearts, white anchovies, croutons, shaved parmesan",
+        "price": 11,
+        "section": "Starter"
+    },
+    {
+        "name": "Pear & Arugula Salad",
+        "ingredients": "endive, spiced pecans, manchego, raspberry vinaigrette",
+        "price": 11,
+        "section": "Starter"
+    },
+    {
+        "name": "Ricotta Gnocchi",
+        "ingredients": "slope farms, all-natural grass fed classic beef bolognese, aged pecorino",
+        "price": 23,
+        "section": "Seconds"
+    },
+    {
+        "name": "Butternut Squash Ravioli",
+        "ingredients": "thyme brown butter sauce, parmesan cheese",
+        "price": 21,
+        "section": "Seconds"
+    },
+    {
+        "name": "Eggplant Cavatelli",
+        "ingredients": "roasted eggplant, rustic tomatoes, white wine, marinara sauce, fresh mozzarella, basil",
+        "price": 21,
+        "section": "Seconds"
+    },
+    {
+        "name": "Linguini Alle Vongole",
+        "ingredients": "pancetta, clams, hot cherry peppers, garlix, parsley",
+        "price": 24,
+        "section": "Seconds"
+    },
+    {
+        "name": "Chicken & Wild Mushroom Pappardelle",
+        "ingredients": "roasted organic chicken, fresh herbs, truffle oil, parmesan cheese",
+        "price": 23,
+        "section": "Seconds"
+    },
+    {
+        "name": "Sausage Tagliatelle",
+        "ingredients": "house made fennel sausage, broccoli rabe, garlic, basil pesto, chili flakes, parmesan cheese",
+        "price": 23,
+        "section": "Seconds"
+    },
+    {
+        "name": "Seafood Pappardelle",
+        "ingredients": "lobster, shrimp, scallops, peas, rustic tomatoes, brandy-lobster sauce",
+        "price": 30,
+        "section": "Seconds"
+    },
+    {
+        "name": "Lamb & Wild Mushroom Linguini                                                                                      ",
+        "ingredients": "braised lamb, fava beans, asparagus tips, parmesan, braising sauce",
+        "price": 25,
+        "section": "Seconds"
+    },
+    {
+        "name": "Shrimp Amalfi",
+        "ingredients": "fresh shrimp sautéed with shaved garlic, fresh tomatoes, mashed potatoes, asparagus",
+        "price": 30,
+        "section": "Seconds"
+    },
+    {
+        "name": "Seafood Pan Roast",
+        "ingredients": "shrimp, littleneck clams, mussels, lobster, scallop, white wine, tomato, herb basmati",
+        "price": 32,
+        "section": "Seconds"
+    },
+    {
+        "name": "Seared Sea Scallops",
+        "ingredients": "lobster, scallion mash, haricot verts, citrus, almonds",
+        "price": 34,
+        "section": "Seconds"
+    },
+    {
+        "name": "Rare Seared Yellowfin Tuna",
+        "ingredients": "braised lentils, artichokes, artichoke guacamole",
+        "price": 30,
+        "section": "Seconds"
+    },
+    {
+        "name": "Grilled Organic Salmon",
+        "ingredients": "roasted potatoes, baby carrots, roasted baby beet vinaigrette",
+        "price": 29,
+        "section": "Seconds"
+    },
+    {
+        "name": "Grilled Rainbow Trout",
+        "ingredients": "riesling poached golden raisin, cauliflower couscous, carrot harissa melted leeks, asparagus, lemon butter sauce",
+        "price": 29,
+        "section": "Seconds"
+    },
+    {
+        "name": "Pan Seared Duck Breast",
+        "ingredients": "butternut squash puree, brussels sprouts, blueberry sauce",
+        "price": 32,
+        "section": "Seconds"
+    },
+    {
+        "name": "Roasted Rack Of Lamb",
+        "ingredients": "risotto style grains, butternut squash, asparagus, rosemary sauce",
+        "price": 41,
+        "section": "Seconds"
+    },
+    {
+        "name": "Roasted All Natural Half Chicken Scarpariello",
+        "ingredients": "dirty rice, garlic spinach, chorizo, cherry peppers, roasted piquillo peppers",
+        "price": 28,
+        "section": "Seconds"
+    },
+    {
+        "name": "Harvest Burger",
+        "ingredients": "slope farms all-natural grass feed beef, bacon, crispy onions, tomato mayo, grafton cheddar, everything spice fries",
+        "price": 24,
+        "section": "Seconds"
+    },
+    {
+        "name": "Filet Mignon",
+        "ingredients": "truffle mashed potatoes, brussel sprouts, fig port demi",
+        "price": 40,
+        "section": "Seconds"
+    },
+    {
+        "name": "Hanger Steak",
+        "ingredients": "mashed potatoes, garlic spinach, chimichurri",
+        "price": 31,
+        "section": "Seconds"
+    },
+    {
+        "name": "Grilled NY Strip Steak",
+        "ingredients": "truffle french fries, grilled asparagus, green peppercorn sauce",
+        "price": 36,
+        "section": "Seconds"
+    },
+    {
+        "name": "Grilled Asparagus",
+        "price": 6,
+        "section": "Sides"
+    },
+    {
+        "name": "Mashed Potatoes",
+        "price": 4,
+        "section": "Sides"
+    },
+    {
+        "name": "Everything Spice Fries",
+        "price": 5,
+        "section": "Sides"
+    },
+    {
+        "name": "Sautéed Spinach & Garlic",
+        "price": 5,
+        "section": "Sides"
+    },
+    {
+        "name": "House-Made Potato Chips",
+        "price": 3,
+        "section": "Sides"
+    },
+    {
+        "name": "Brussels Sprouts, Irish Bacon",
+        "price": 6,
+        "section": "Sides"
+    },
+    {
+        "name": "Creamy Spinach",
+        "price": 6,
+        "section": "Sides"
+    },
+    {
+        "name": "Mushrooms",
+        "price": 6,
+        "section": "Sides"
+    }
+]
+
+
+
+
+
+
+
