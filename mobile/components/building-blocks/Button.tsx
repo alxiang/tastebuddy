@@ -7,8 +7,16 @@ type ButtonProps = { containerStyle?: ViewProps; textStyle?: TextProps } & Pick<
   Pick<RNButtonProps, 'title'>
 
 const Button: FC<ButtonProps> = ({ containerStyle, onPress, title, textStyle }) => {
+  const getContainerStyle = ({ pressed }: { pressed: boolean }) => {
+    return {
+      ...styles.container,
+      ...containerStyle,
+      opacity: pressed ? 0.5 : 1,
+    }
+  }
+
   return (
-    <Pressable style={[styles.container, containerStyle]} onPress={onPress}>
+    <Pressable style={getContainerStyle} onPress={onPress}>
       <Text value={title} style={textStyle} />
     </Pressable>
   )
