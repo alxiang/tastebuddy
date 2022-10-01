@@ -39,7 +39,7 @@ class TasteEngine(abc.ABC):
 
         print(self.flavor_embeddings.shape, self.cuisine_embeddings.shape)
     
-    def compute_taste_profile_for_user(self, user):
+    def compute_taste_profile_for_user(self, user_food_history):
         """
         Natural Language Similarity Approach
 
