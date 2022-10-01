@@ -5,14 +5,9 @@ import LoggedOutStackNavigator from './navigation/LoggedOutStackNavigator'
 import LoggedInStackNavigator from './navigation/LoggedInStackNavigator'
 import { useFonts } from 'expo-font'
 import AuthContext, { AuthProvider } from './context/AuthContext'
-import SplashScreen from './screens/SplashScreen'
 
 function App() {
-  const { loading: loadingProfile, loggedIn } = useContext(AuthContext)
-
-  if (loadingProfile) {
-    return <SplashScreen />
-  }
+  const { loggedIn } = useContext(AuthContext)
 
   const loggedInRoot = (
     <UserProvider>
@@ -29,6 +24,11 @@ const AppContainer: FC = () => {
     Roboto: require('./assets/fonts/Roboto-Regular.ttf'),
     'Roboto-Medium': require('./assets/fonts/Roboto-Medium.ttf'),
   })
+
+  // TODO: Splash screen
+  if (!fontsLoaded) {
+    return null
+  }
 
   return (
     <AuthProvider>

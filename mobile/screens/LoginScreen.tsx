@@ -1,12 +1,13 @@
 import React, { FC } from 'react'
-import { View, Text } from 'react-native'
 import type { StackScreenProps } from '@react-navigation/stack'
 import { LoggedOutStackParamList } from '../navigation/NavigationTypes'
+import { Button } from '../components/building-blocks'
+import SafeAreaView from '../components/SafeAreaView'
 
 const LoginScreen: FC<StackScreenProps<LoggedOutStackParamList>> = () => (
-  <View>
-    <Text>Login Screen</Text>
-  </View>
+  <SafeAreaView style={{ justifyContent: 'center', alignItems: 'center' }}>
+    <Button title="Sign In" />
+  </SafeAreaView>
 )
 
 export default LoginScreen

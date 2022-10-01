@@ -1,9 +1,10 @@
 const colors = {
-  mainOrange: '#FF8B33',
-  mainBrown: '#7D3F3B',
-  mainRed: '#E24A28',
-  mainGreen: '#53694F',
-  mainWhite: '#FFEBC2',
+  orange: '#FF8B33',
+  brown: '#7D3F3B',
+  red: '#E24A28',
+  green: '#53694F',
+  white: '#FFEBC2',
+  black: '#000000',
 }
 
 export default {
