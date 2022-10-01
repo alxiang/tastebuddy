@@ -317,10 +317,6 @@ FOODS = [
 def ping(request): 
     if request.method == 'GET':
         return Response({"detail": "pong"}, status = status.HTTP_200_OK) 
-        # "name": "Grilled Calamari",
-        # "ingredients": ["crispy fried tentacles", "jalapeños", "cilantro", "whipped avocado"],
-        # "price": 15,
-        # "section": "Snacks & Shares"
 
 @api_view(['GET'])
 def pre_populate(request):
@@ -435,7 +431,6 @@ def check_order_history(request):
     pass 
 def get_taste_profile(request): 
     pass 
-
 
 
         

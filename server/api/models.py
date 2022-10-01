@@ -42,7 +42,6 @@ class User(models.Model):
     email = models.TextField() 
     profile = models.JSONField(blank = True, default = dict) 
 
-
 ##
 #  created and updated while user is using the app
 ##
