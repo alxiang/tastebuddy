@@ -25,6 +25,11 @@ const AppContainer: FC = () => {
     'Roboto-Medium': require('./assets/fonts/Roboto-Medium.ttf'),
   })
 
+  // TODO: Splash screen
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
     <AuthProvider>
       <App />
