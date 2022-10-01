@@ -1,22 +1,15 @@
 import React, { FC } from 'react'
-import { Pressable, PressableProps, ButtonProps as RNButtonProps, StyleSheet, ViewProps, TextProps } from 'react-native'
+import { PressableProps, ButtonProps as RNButtonProps, StyleSheet, ViewProps, TextProps } from 'react-native'
 import Colors from '../../constants/Colors'
 import Text from './Text'
+import Pressable from './Pressable'
 
 type ButtonProps = { containerStyle?: ViewProps; textStyle?: TextProps } & Pick<PressableProps, 'onPress'> &
   Pick<RNButtonProps, 'title'>
 
 const Button: FC<ButtonProps> = ({ containerStyle, onPress, title, textStyle }) => {
-  const getContainerStyle = ({ pressed }: { pressed: boolean }) => {
-    return {
-      ...styles.container,
-      ...containerStyle,
-      opacity: pressed ? 0.5 : 1,
-    }
-  }
-
   return (
-    <Pressable style={getContainerStyle} onPress={onPress}>
+    <Pressable style={[styles.container, containerStyle]} onPress={onPress}>
       <Text value={title} style={textStyle} />
     </Pressable>
   )
