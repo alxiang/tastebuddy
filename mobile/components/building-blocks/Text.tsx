@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { StyleSheet, Text as RNText, TextProps as RNTextProps } from 'react-native'
-import colors from '../../constants/colors'
+import Colors from '../../constants/Colors'
 
 type TextProps = { value: string } & Pick<
   RNTextProps,
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Medium',
     fontSize: 14,
     fontWeight: '300',
-    color: colors.mainBrown,
+    color: Colors.brown,
   },
 })
 

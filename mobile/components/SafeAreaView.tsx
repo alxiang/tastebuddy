@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { ViewProps, StyleSheet } from 'react-native'
 import { SafeAreaView as RNSafeAreaView } from 'react-native-safe-area-context'
-import colors from '../constants/colors'
+import Colors from '../constants/Colors'
 
 const SafeAreaView: FC<ViewProps> = ({ children, ...props }) => {
   return (
@@ -12,7 +12,7 @@ const SafeAreaView: FC<ViewProps> = ({ children, ...props }) => {
 }
 
 const styles = StyleSheet.create({
-  view: { flex: 1, backgroundColor: colors.mainWhite },
+  view: { flex: 1, backgroundColor: Colors.white },
 })
 
 export default SafeAreaView

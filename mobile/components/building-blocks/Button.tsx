@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Pressable, PressableProps, ButtonProps as RNButtonProps, StyleSheet, ViewProps, TextProps } from 'react-native'
-import colors from '../../constants/colors'
+import Colors from '../../constants/Colors'
 import Text from './Text'
 
 type ButtonProps = { containerStyle?: ViewProps; textStyle?: TextProps } & Pick<PressableProps, 'onPress'> &
@@ -16,7 +16,7 @@ const Button: FC<ButtonProps> = ({ containerStyle, onPress, title, textStyle }) 
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: colors.mainBrown,
+    borderColor: Colors.brown,
     borderWidth: 2,
     borderRadius: 4,
     paddingVertical: 10,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Medium',
     fontSize: 14,
     fontWeight: '300',
-    color: colors.mainBrown,
+    color: Colors.brown,
   },
 })
 
