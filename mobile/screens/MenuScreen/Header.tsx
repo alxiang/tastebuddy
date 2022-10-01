@@ -1,16 +1,20 @@
 import React, { FC } from 'react'
-import { View, StyleSheet } from 'react-native'
-import { Text } from '../../components/building-blocks'
+import { View, StyleSheet, Image } from 'react-native'
+import { Text, Pressable } from '../../components/building-blocks'
 import Colors from '../../constants/Colors'
 
-type HeaderProps = {}
+type HeaderProps = {
+  onPressProfile: () => void
+}
 
-const Header: FC<HeaderProps> = ({}) => {
+const Header: FC<HeaderProps> = ({ onPressProfile }) => {
   return (
     <View style={styles.container}>
       <View style={styles.topRow}>
         <Text value="Taste Buddy" style={styles.tasteBuddyText} />
-        <Text value="Profile" style={styles.profileButton} />
+        <Pressable onPress={onPressProfile}>
+          <Image source={require('../../assets/images/user-profile.png')} style={styles.image} />
+        </Pressable>
       </View>
       <Text value="Harvest" style={styles.restaurantName} />
       <View style={styles.bottomRow}>
@@ -48,6 +52,10 @@ const styles = StyleSheet.create({
   },
   filterButton: {
     color: Colors.black,
+  },
+  image: {
+    height: 20,
+    width: 20,
   },
 })
 

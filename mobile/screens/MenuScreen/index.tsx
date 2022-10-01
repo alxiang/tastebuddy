@@ -8,13 +8,13 @@ import { StyleSheet, View } from 'react-native'
 import Footer from './Footer'
 import Menu from './Menu'
 
-const MenuScreen: FC<StackScreenProps<LoggedInStackParamList>> = () => {
+const MenuScreen: FC<StackScreenProps<LoggedInStackParamList>> = ({ navigation }) => {
   const hr = <View style={styles.hr} />
 
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Header />
+        <Header onPressProfile={() => navigation.navigate('UserProfile')} />
         {hr}
         <Menu />
         {hr}
