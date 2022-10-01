@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Text } from '../../components/building-blocks'
-import Colors from '../../constants/colors'
+import Colors from '../../constants/Colors'
 
 type HeaderProps = {}
 
