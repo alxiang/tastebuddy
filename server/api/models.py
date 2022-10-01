@@ -46,14 +46,14 @@ class User(models.Model):
     email = models.TextField() 
     profile = models.JSONField(blank = True, default = dict) 
 
-class Food_Order(models.Model): 
+class FoodOrder(models.Model): 
     id = models.UUIDField(primary_key = True, default = uuid.uuid4)
     created = models.DateTimeField(auto_now_add = True) 
     food_id = models.ForeignKey(Food, on_delete = models.CASCADE)
     special_request = models.TextField()
 
 
-class User_Order(models.Model): 
+class UserOrder(models.Model): 
     id = models.UUIDField(primary_key = True, default = uuid.uuid4)    
     created = models.DateTimeField(auto_now_add = True) 
     restaurant_id = models.ForeignKey(Restaurant, on_delete = models.CASCADE)
