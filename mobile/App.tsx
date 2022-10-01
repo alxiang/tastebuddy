@@ -5,14 +5,9 @@ import LoggedOutStackNavigator from './navigation/LoggedOutStackNavigator'
 import LoggedInStackNavigator from './navigation/LoggedInStackNavigator'
 import { useFonts } from 'expo-font'
 import AuthContext, { AuthProvider } from './context/AuthContext'
-import SplashScreen from './screens/SplashScreen'
 
 function App() {
-  const { loading: loadingProfile, loggedIn } = useContext(AuthContext)
-
-  if (loadingProfile) {
-    return <SplashScreen />
-  }
+  const { loggedIn } = useContext(AuthContext)
 
   const loggedInRoot = (
     <UserProvider>
