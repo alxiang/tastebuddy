@@ -1,14 +1,14 @@
-from django.shortcuts import render
-from django.http import JsonResponse 
-from django.forms.models import model_to_dict
-from rest_framework import status
-from rest_framework.decorators import api_view 
-from rest_framework.response import Response
-from api.models import Food, Restaurant, Menu, User
-from uuid import uuid4, UUID
-
-
 import json
+from uuid import UUID, uuid4
+
+from django.forms.models import model_to_dict
+from django.http import JsonResponse
+from django.shortcuts import render
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from api.models import Food, Menu, Restaurant, User
 
 FOODS = [
     {
@@ -314,127 +314,46 @@ FOODS = [
 
 
 @api_view(['GET'])
-def ping(request): 
+def ping(request):
     if request.method == 'GET':
-        return Response({"detail": "pong"}, status = status.HTTP_200_OK) 
+        return Response({"detail": "pong"}, status=status.HTTP_200_OK)
+
 
 @api_view(['GET'])
 def pre_populate(request):
     if request.method == 'GET':
-        rest_id = uuid4() 
-        menu_id = uuid4() 
+        rest_id = uuid4()
+        menu_id = uuid4()
         new_rest = Restaurant(
-            id = rest_id, 
-            name = 'Harvest', 
-            description = 'Upscale New American dishes paired with wine & cocktails in a sleek, sophisticated locale.', 
-            tags = ['Italian'],
-            address = '1104 Chapel St, New Haven, CT 06510', 
-            rating = 420 
+            id=rest_id,
+            name='Harvest',
+            description='Upscale New American dishes paired with wine & cocktails in a sleek, sophisticated locale.',
+            tags=['Italian'],
+            address='1104 Chapel St, New Haven, CT 06510',
+            rating=420
         )
-        new_rest.save() 
+        new_rest.save()
         new_menu = Menu(
-            id = menu_id, 
-            restaurant_id_id = rest_id, 
-            menu_type = 'Italian', 
+            id=menu_id,
+            restaurant_id_id=rest_id,
+            menu_type='Italian',
         )
-        new_menu.save() 
-        for food_data in FOODS: 
-            ingr = [] 
-            if 'ingredients' in food_data.keys(): 
-                if isinstance(food_data['ingredients'],str): 
-                    ingr = food_data['ingredients'].split() 
-                else: 
+        new_menu.save()
+        for food_data in FOODS:
+            ingr = []
+            if 'ingredients' in food_data.keys():
+                if isinstance(food_data['ingredients'], str):
+                    ingr = food_data['ingredients'].split()
+                else:
                     ingr = food_data['ingredients']
             new_food = Food(
-                name = food_data['name'],
-                ingredients = ingr,
-                price = food_data['price'], 
-                section = food_data['section'], 
-                description = "", 
-                special_notes = [], 
-                menu_id_id = menu_id
+                name=food_data['name'],
+                ingredients=ingr,
+                price=food_data['price'],
+                section=food_data['section'],
+                description="",
+                special_notes=[],
+                menu_id_id=menu_id
             )
             new_food.save()
-        return Response({"detail": "pong"}, status = status.HTTP_200_OK) 
-
-#Verify against 
-@api_view(['POST'])
-def login(request):
-    # uuid = UUID(request.GET.get('user_id',0))
-    body_unicode = request.body.decode('utf-8') 
-    body = json.loads(body_unicode) 
-    try: 
-        user_data = User.objects.get(email = body['email'])
-    except: 
-        return Response({"message", "email not found"}, status = status.HTTP_404_NOT_FOUND)
-    if body['password'] != '123': 
-        return Response({"message", "incorrect password"}, status = status.HTTP_404_NOT_FOUND)
-    
-
-    if body['password'] == '123': 
-        user_data = User.objects.get(email = body['email'])
-    data = {}
-    if user_data: 
-        data = model_to_dict(user_data,fields = ['created','name','email','profile'])
-        return JsonResponse(data) 
-        return Response({"Nothing": "Found"}, status = status.HTTP_400_BAD_REQUEST) 
-
-@api_view(['GET'])
-def signup(request):
-    try: 
-        new_user = User(
-            name = request.GET.get('name', ''), 
-            email = request.GET.get('email', ''), 
-            profile = request.GET.get('profile', {}), 
-        )
-        new_user.save() 
-        return Response({}, status = status.HTTP_201_CREATED) 
-    except: 
-        return Response({"Nothing": "Found"}, status = status.HTTP_400_BAD_REQUEST) 
-
-#Scan QR code, get rest
-def QR_rest(request): 
-    pass 
-
-#Restaurant ID in request
-@api_view(['GET'])
-def get_restaurant(request): 
-    data = {}
-    uuid = UUID(request.GET.get('restaurant_id',0))
-    # print("UUID: " + str(uuid)) 
-    restaurant_data = Restaurant.objects.get(id = uuid)
-    if restaurant_data:
-        data = model_to_dict(restaurant_data,fields = ['created','name','description','tags','address','rating'])
-    return JsonResponse(data) 
-    
- 
-
-#Restaurant ID in request
-def get_menus_for_restaurant(request): 
-    pass
-
-#Menu ID in request
-def get_foods_for_menu(request): 
-    pass 
-
-#Post cart
-def order(request): 
-    pass 
-
-def post_ratings(request): 
-    pass 
-
-def post_review(request): 
-    pass 
-
-def check_order_history(request): 
-    pass 
-def get_taste_profile(request): 
-    pass 
-
-
-        
-
-
-
-    
+        return Response({"detail": "pong"}, status=status.HTTP_200_OK)
