@@ -1,11 +1,13 @@
 import json
 
 from api.models import Food, FoodOrder, Order, UserOrder
+from api.serializers import OrderSerializer
 from django.forms.models import model_to_dict
 from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from server.api.serializers import FoodSerializer
 
 
 # Menu ID in request
@@ -15,22 +17,8 @@ def get_foods_for_menu(request, menu_id):
     foods = list(Food.objects.all().filter(menu_id=menu_id))
     if foods:
         for food in foods:
-            data["0"].append(
-                model_to_dict(
-                    food,
-                    fields=[
-                        "id",
-                        "created",
-                        "name",
-                        "description",
-                        "ingredients",
-                        "price",
-                        "special_notes",
-                        "section",
-                        "menu_id",
-                    ],
-                )
-            )
+            serializer = FoodSerializer(food)
+            data["0"].append(serializer.data)
     return JsonResponse(data)
 
 
@@ -76,6 +64,6 @@ def post_order(request):
         )
         food_order.save()
 
-    return Response({"message", "incorrect password"}, status = status.HTTP_201_CREATED)
+    serializer = OrderSerializer(new_order)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
         
-    

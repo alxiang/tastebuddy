@@ -5,10 +5,6 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 
 
-def QR_rest(request):
-    pass
-
-
 # Restaurant ID in request
 @api_view(["GET"])
 def get_restaurant(request, restaurant_id):
