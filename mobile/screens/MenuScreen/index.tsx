@@ -8,16 +8,12 @@ import { StyleSheet, View } from 'react-native'
 import Footer from './Footer'
 import Menu from './Menu'
 
-const MenuScreen: FC<StackScreenProps<LoggedInStackParamList>> = () => {
-  const hr = <View style={styles.hr} />
-
+const MenuScreen: FC<StackScreenProps<LoggedInStackParamList>> = ({ navigation }) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <Header />
-        {hr}
         <Menu />
-        {hr}
         <Footer />
       </View>
     </SafeAreaView>
@@ -27,7 +23,7 @@ const MenuScreen: FC<StackScreenProps<LoggedInStackParamList>> = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 15,
+    marginTop: 10,
     marginHorizontal: 10,
   },
   hr: {
