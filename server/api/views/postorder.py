@@ -30,7 +30,10 @@ def post_reviews(request):
     body = json.loads(body_unicode)
     try: 
         user_order = UserOrder.objects.get(user_id = body['user_id'], order_id = body['order_id']) 
-        user_order.review = body['review']
+        user_order.reviews = body['reviews']
+        order = Order.objects.get(order_id = body['order_id']) 
+        order.status = "done" 
+        order.save() 
         user_order.save() 
         return Response({}, status = status.HTTP_200_OK)
     except: 
