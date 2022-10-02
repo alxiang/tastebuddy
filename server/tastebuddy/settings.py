@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'tastebuddy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd7lsb5qfgkq77i',
-        'USER': 'cemsitowdudaqt', 
+        'NAME': 'd9qebcr5qmkbh1',
+        'USER': 'rucbmalibdljgj', 
         'PORT': '5432', 
-        'PASSWORD': 'ca8640898cc6e682007c689ac6d61edc434b64a1a286cef01d560859268cbf34', 
-        'HOST': 'ec2-107-23-76-12.compute-1.amazonaws.com', 
+        'PASSWORD': '45fb91c2c4e6b7731f346bb756e70a1deaa15a6ae4cf116dda8672cf4e3b77f8', 
+        'HOST': 'ec2-54-91-223-99.compute-1.amazonaws.com', 
     }
 }
 
