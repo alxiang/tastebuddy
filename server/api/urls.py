@@ -18,6 +18,6 @@ urlpatterns = [
     path("ratings/", postorder.post_ratings),
     path("review/", postorder.post_review),
 
-    path("orderhistory/", profile.check_order_history),
+    path("userorders/<str>:id", profile.check_order_history),
     path("tasteprofile/<str>:id", profile.get_taste_profile),
 ]
