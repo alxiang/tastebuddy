@@ -1,6 +1,6 @@
 import json
 
-from api.models import Food, FoodOrder, Order, UserOrder
+from api.models import Food, FoodOrder, Order, UserOrder, Restaurant,User
 from api.serializers import OrderSerializer
 from django.http import JsonResponse
 from ml.TasteEngine import TasteEngine
@@ -8,7 +8,7 @@ from ml.utils import retrieve_user_food_history
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from server.api.serializers import FoodSerializer
+from api.serializers import FoodSerializer
 
 taste_engine = TasteEngine()
 
@@ -50,7 +50,9 @@ def post_order(request):
     body = json.loads(body_unicode)
 
     user_id = body["user_id"]
+    user = User.objects.get(id = user_id) 
     restaurant_id = body["restaurant_id"]
+    restaurant = Restaurant.objects.get(id = restaurant_id)
     food_id_to_special_request = body["food_id_to_special_request"]
 
     total_price = 0
@@ -58,19 +60,20 @@ def post_order(request):
         food = Food.objects.get(id=food_id)
         total_price += food.price
 
+
     # Create the Order (highest level of hierarchy)
     new_order = Order(
         time=0,
         status="created",
         price=total_price,
-        restaurant_id=restaurant_id,
+        restaurant_id=restaurant,
     )
     new_order.save() 
 
     # Create the user orders for the user (second level)
     user_order = UserOrder(
-        user_id=user_id,
-        order_id=new_order.id,
+        user_id=user,
+        order_id=new_order,
         reviews=""
     )
     user_order.save()
@@ -79,8 +82,8 @@ def post_order(request):
     for food_id, special_request in food_id_to_special_request.items():
         food = Food.objects.get(id=food_id)
         food_order = FoodOrder(
-            user_order_id=user_order.id,
-            food_id=food_id,
+            user_order_id=user_order,
+            food_id=food,
             special_request=special_request
         )
         food_order.save()
