@@ -10,7 +10,7 @@ urlpatterns = [
     path("signup/", login.signup),
 
     path("restaurant/<str>:id", restaurants.get_restaurant),
-    path("menus/", restaurants.get_menus_for_restaurant),
+    path("menu/<str>:id", restaurants.get_menus_for_restaurant),
 
     path("foods/", order.get_foods_for_menu),
     path("order/", order.order),
