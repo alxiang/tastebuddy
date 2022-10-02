@@ -1,24 +1,26 @@
 import React, { FC } from 'react'
 import { View, StyleSheet } from 'react-native'
-import Food from "./Food"
+import Food from './Food'
 import { Text } from '../../components/building-blocks'
+import { Food as FoodType } from '../../types'
 
 type SectionProps = {
-  isRecommended: boolean,
-  name: string,
-  description?: string,
+  isRecommended: boolean
+  name: string
+  description?: string
   foods: any
+  addItem: (food: FoodType) => void
 }
 
-const MenuSection: FC<SectionProps> = (props) => {
+const MenuSection: FC<SectionProps> = ({ isRecommended, name, description, foods, addItem }) => {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.name} value={props.name} />
-        {props.description && (<Text style={styles.description} value={props.description} />)}
+        <Text style={styles.name} value={name} />
+        {description && <Text style={styles.description} value={description} />}
       </View>
-      {props.foods.map((food: any) => {
-        if (food.active) return <Food key={food.id} {...food}/>;
+      {foods.map((food: any) => {
+        if (food.active) return <Food key={food.id} {...food} addItem={addItem} />
       })}
     </View>
   )
@@ -32,11 +34,11 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   name: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 20,
   },
   description: {
-    textAlign: "center",
+    textAlign: 'center',
     paddingBottom: 10,
   },
 })
