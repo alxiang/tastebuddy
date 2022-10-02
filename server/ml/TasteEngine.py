@@ -94,7 +94,7 @@ class TasteEngine(abc.ABC):
         return {"flavor_profile": flavor_profile, "cuisine_profile": cuisine_profile}
         
 
-    def compute_score_for_menu(self, user, menu):
+    def compute_score_for_food(self, user_food_history, food_tup):
         """
         Content-based filtering approach
 
@@ -104,45 +104,23 @@ class TasteEngine(abc.ABC):
         Takes user food 
         """
 
-        # TODO: actually retrieve this later
-        food_history = [
-            ("Charred Octopus", "roasted garlic white bean puree, piquillo peppers, cherry tomatoes, avocado", 4/5),
-            ("Lobster Bisque", "black truffle, melted leeks, lobster chunk", 4/5),
-            ("Grilled NY Strip Steak", "truffle french fries, grilled asparagus, green peppercorn sauce", 3/5),
-            ("Mushrooms", "", 2/5),
-            ("Seafood Pappardelle", "lobster, shrimp, scallops, peas, rustic tomatoes, brandy-lobster sauce", 5/5),
-        ]
-        reviews = [tup[2] for tup in food_history]
-        ## Embed the foods
+        reviews = [tup[2] for tup in user_food_history]
+        ## Embed the food history
         food_strings = [
-            f"{tup[0]}: {tup[1]}" for tup in food_history
+            f"{tup[0]}: {tup[1]}" for tup in user_food_history
         ]
         food_embeddings = self.model.encode(food_strings)
 
-        menu = [
-            ("Charred Octopus", "roasted garlic white bean puree, piquillo peppers, cherry tomatoes, avocado"),
-            ("Lobster Bisque", "black truffle, melted leeks, lobster chunk"),
-            ("Grilled NY Strip Steak", "truffle french fries, grilled asparagus, green peppercorn sauce"),
-            ("Mushrooms", ""),
-            ("Seafood Pappardelle", "lobster, shrimp, scallops, peas, rustic tomatoes, brandy-lobster sauce"),
-        ]
-        ## Embed the foods
-        menu_foods = [
-            f"{tup[0]}: {tup[1]}" for tup in menu
-        ]
-        menu_food_embeddings = self.model.encode(menu_foods)
+        ## Embed the food
+        menu_food = [f"{food_tup[0]}: {food_tup[1]}"]
+        menu_food_embedding = self.model.encode(menu_food)
 
-        score_per_menu_item = {}
+        score = 0
 
-        for (menu_food_name, _), menu_food_embedding in zip(menu, menu_food_embeddings):
-            score = 0
+        for food_embedding, review_score in zip(food_embeddings, reviews):
+            score += cosine_sim(menu_food_embedding[0], food_embedding) * review_score
 
-            for food_embedding, review_score in zip(food_embeddings, reviews):
-                score += cosine_sim(menu_food_embedding, food_embedding) * review_score
-
-            score_per_menu_item[menu_food_name] = score
-
-        return score_per_menu_item
+        return score
 
 
 

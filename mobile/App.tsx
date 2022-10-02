@@ -9,11 +9,7 @@ import AuthContext, { AuthProvider } from './context/AuthContext'
 function App() {
   const { loggedIn } = useContext(AuthContext)
 
-  const loggedInRoot = (
-    <UserProvider>
-      <LoggedInStackNavigator />
-    </UserProvider>
-  )
+  const loggedInRoot = <LoggedInStackNavigator />
   const loggedOutRoot = <LoggedOutStackNavigator />
 
   return <NavigationContainer>{true ? loggedInRoot : loggedOutRoot}</NavigationContainer>
@@ -32,7 +28,9 @@ const AppContainer: FC = () => {
 
   return (
     <AuthProvider>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </AuthProvider>
   )
 }

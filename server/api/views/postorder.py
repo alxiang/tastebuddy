@@ -27,8 +27,9 @@ def post_reviews(request):
     body = json.loads(body_unicode)
     try: 
         user_order = UserOrder.objects.get(user_id = body['user_id'], order_id = body['order_id']) 
+        print(user_order)
         user_order.reviews = body['reviews']
-        order = Order.objects.get(order_id = body['order_id']) 
+        order = Order.objects.get(id = body['order_id']) 
         order.status = "done" 
         order.save() 
         user_order.save() 

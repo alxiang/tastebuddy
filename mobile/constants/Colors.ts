@@ -5,6 +5,7 @@ const colors = {
   green: '#53694F',
   white: '#FFEBC2',
   black: '#000000',
+  errorRed: '#FF0000',
 }
 
 export default {
