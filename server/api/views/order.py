@@ -2,23 +2,32 @@ import json
 
 from api.models import Food, FoodOrder, Order, UserOrder
 from api.serializers import OrderSerializer
-from django.forms.models import model_to_dict
 from django.http import JsonResponse
+from ml.TasteEngine import TasteEngine
+from ml.utils import retrieve_user_food_history
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from server.api.serializers import FoodSerializer
 
+taste_engine = TasteEngine()
 
 # Menu ID in request
 @api_view(["GET"])
-def get_foods_for_menu(request, menu_id):
+def get_foods_for_menu(request, menu_id, user_id):
     data = {"0": []}
     foods = list(Food.objects.all().filter(menu_id=menu_id))
+    
     if foods:
         for food in foods:
             serializer = FoodSerializer(food)
-            data["0"].append(serializer.data)
+            food_data = serializer.data
+            
+            # inject score per menu item
+            food["affinity"] = taste_engine.compute_score_for_food(retrieve_user_food_history(user_id), (food.name, food.ingredients))
+
+            data["0"].append(food_data)
+
     return JsonResponse(data)
 
 
