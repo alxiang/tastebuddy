@@ -20,7 +20,7 @@ function App() {
   )
   const loggedOutRoot = <LoggedOutStackNavigator />
 
-  return <NavigationContainer>{true ? loggedInRoot : loggedOutRoot}</NavigationContainer>
+  return <NavigationContainer>{loggedIn ? loggedInRoot : loggedOutRoot}</NavigationContainer>
 }
 
 const AppContainer: FC = () => {

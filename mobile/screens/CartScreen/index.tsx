@@ -30,7 +30,6 @@ const CartScreen: FC<StackScreenProps<LoggedInStackParamList>> = () => {
     tasteBuddy
       .post('orders/', JSON.stringify(order))
       .then((res) => {
-        clearCart()
         setOrderId(res.data.id)
         return res
       })
@@ -61,7 +60,7 @@ const CartScreen: FC<StackScreenProps<LoggedInStackParamList>> = () => {
     <SafeAreaView>
       <View style={styles.container}>
         {cart.items.length === 0 ? <Text value="Your cart is empty!" style={styles.emptyText} /> : null}
-        <FlatList data={cart.items} renderItem={({ item }) => <CartItem {...item} />} style={styles.cartItems} />
+        <FlatList data={cart.items} renderItem={({ item }) => <CartItem {...item} />} />
       </View>
       <Footer onClearCart={() => clearCart()} onSubmitOrder={submitOrder} />
     </SafeAreaView>
