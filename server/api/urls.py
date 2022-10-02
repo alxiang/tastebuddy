@@ -16,7 +16,7 @@ urlpatterns = [
     path("orders/<str:user_id>/", order.order),
 
     path("rating/<str:order_id>/<str:user_id>/", postorder.post_ratings),
-    path("review/<str:order_id>/<str:user_id>/", postorder.post_review),
+    path("review/<str:order_id>/<str:user_id>/", postorder.post_reviews),
 
     path("orderhistory/<str:user_id>/", profile.check_order_history),
     path("tasteprofile/<str:user_id>/", profile.get_taste_profile),

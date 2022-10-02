@@ -9,17 +9,17 @@ class RestaurantSerializer(serializers.ModelSerializer):
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
-        fields = ['id', 'created', 'time', 'status', 'price']
+        fields = ['id', 'created', 'restaurant_id', 'menu_type']
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
-        fields = ['id', 'created', 'time', 'status', 'price']
+        fields = ['id', 'created', 'time', 'status', 'price','restaurant_id']
 
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
-        fields = ['id', 'created', 'name', 'description', 'ingredients', 'price', 'special_notes', 'restaurant_id', 'section', 'menu_id', 'order_id']
+        fields = ['id', 'created', 'name', 'description', 'ingredients', 'price', 'special_notes', 'section', 'menu_id']
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,9 +29,9 @@ class UserSerializer(serializers.ModelSerializer):
 class FoodOrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = FoodOrder
-        fields = ['id', 'created', 'food_id', 'special_request']
+        fields = ['id', 'created', 'food_id', 'special_request', 'rating']
 
 class UserOrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserOrder
-        fields = ['id', 'created', 'restaurant_id', 'user_id', 'order_id', 'rating', 'reviews']
+        fields = ['id', 'created', 'user_id', 'order_id','reviews']
