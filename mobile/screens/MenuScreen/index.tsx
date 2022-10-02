@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   hr: {
     borderBottomColor: Colors.black,
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
   },
 })
 

@@ -4,18 +4,17 @@ import MenuSection from './MenuSection'
 import tasteBuddy from '../../api/tasteBuddyApi'
 import { Text } from '../../components/building-blocks'
 import MenuFilter from './MenuFilter'
-import { Menu as MenuType } from '../../types'
+import { Food, Menu as MenuType } from '../../types'
 import UserContext from '../../context/UserContext'
 
 type MenuProps = {}
 
-const HARVEST_ID = "d4912fe9-2aaf-42bb-90a4-b9e443206ef5";
-const USER_ID = "c15834b0-a135-4ae0-8791-919aa66dc784";
+const HARVEST_ID = 'd4912fe9-2aaf-42bb-90a4-b9e443206ef5'
+const USER_ID = 'c15834b0-a135-4ae0-8791-919aa66dc784'
 
 const Menu: FC<MenuProps> = () => {
-
-  const { user } = useContext(UserContext);
-  const [foods, setFoods] = useState([])
+  const { user } = useContext(UserContext)
+  const [foods, setFoods] = useState<Food[]>([])
   const [menu, setMenu] = useState<MenuType>()
 
   useEffect(() => {
@@ -31,94 +30,36 @@ const Menu: FC<MenuProps> = () => {
 
   useEffect(() => {
     if (!!menu) {
-      tasteBuddy
-        .get(`food/${menu.id}/${USER_ID}/`)
-        .then((res) => {
-          console.log(res)
-        })
+      tasteBuddy.get(`food/${menu.id}/${USER_ID}/`).then((res) => {
+        setFoods(res.data[0])
+      })
     }
   }, [menu])
 
   const getSections = (foods: Food[]) => {
-    const sections = {}
+    const sections: any = {}
     for (const food of foods) {
       if (sections.hasOwnProperty(food.section)) {
-
+        sections[food.section].push(food)
       } else {
-        // sections[food.section] = ""
+        sections[food.section] = [food]
       }
     }
+    return sections
   }
 
+  const applyFilter = (foods: Food[]) => {
+    return foods;
+  }
+
+  const sections: any = getSections(applyFilter(foods))
+  
   return (
     <ScrollView style={styles.container}>
-      <MenuSection 
-        isRecommended={true}
-        name="Recommended Dishes"
-        foods={[
-          {
-            id: "1234",
-            name: "Fried Calamari",
-            description: "this is yummy grilled calamari crispy fried tentacles, jalapeños, cilantro, whipped avocado",
-            ingredients: ["calamari", "jalapenos", "cliantro"],
-            price: 1200,
-            special_notes: ["spicy"],
-            active: true
-          },
-          {
-            id: "1234424",
-            name: "Fried Jalapeno",
-            description: "this is yummy grilled calamari crispy fried tentacles, jalapeños, cilantro, whipped avocado",
-            ingredients: ["calamari", "jalapenos", "cliantro"],
-            price: 6500,
-            special_notes: ["gluten"],
-            active: true
-          },
-          {
-            id: "1234424",
-            name: "Fried Jalapeno",
-            description: "this is yummy grilled calamari crispy fried tentacles, jalapeños, cilantro, whipped avocado",
-            ingredients: ["calamari", "jalapenos", "cliantro"],
-            price: 6500,
-            special_notes: ["gluten"],
-            active: false
-          },
-        ]}
-      />
-            <MenuSection 
-        isRecommended={true}
-        name="Other Dishes"
-        description="Some other food you might like"
-        foods={[
-          {
-            id: "1234",
-            name: "Fried Calamari",
-            description: "this is yummy grilled calamari crispy fried tentacles, jalapeños, cilantro, whipped avocado",
-            ingredients: ["calamari", "jalapenos", "cliantro"],
-            price: 1200,
-            special_notes: ["spicy"],
-            active: true
-          },
-          {
-            id: "1234424",
-            name: "Fried Jalapeno",
-            description: "this is yummy grilled calamari crispy fried tentacles, jalapeños, cilantro, whipped avocado",
-            ingredients: ["calamari", "jalapenos", "cliantro"],
-            price: 6500,
-            special_notes: ["gluten"],
-            active: true
-          },
-          {
-            id: "1234424",
-            name: "Fried Jalapeno",
-            description: "this is yummy grilled calamari crispy fried tentacles, jalapeños, cilantro, whipped avocado",
-            ingredients: ["calamari", "jalapenos", "cliantro"],
-            price: 6500,
-            special_notes: ["gluten"],
-            active: false
-          },
-        ]}
-      />
+      {sections &&
+        Object.keys(sections).map((section) => {
+          return <MenuSection key={section} isRecommended={false} name={section} foods={sections[section]} />
+        })}
     </ScrollView>
   )
 }

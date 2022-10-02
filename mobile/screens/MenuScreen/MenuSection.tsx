@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginBottom: 30,
-    borderWidth: 1,
+    borderWidth: 2,
     padding: 10,
   },
   name: {

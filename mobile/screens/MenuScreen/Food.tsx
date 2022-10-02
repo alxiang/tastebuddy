@@ -19,12 +19,12 @@ const Food: FC<FoodProps> = (props) => {
         <Text style={styles.foodName} value={props.name} />
         <View>
             {/* TODO: MAP ICONS TO GRAPHICS */}
-        <Text style={styles.foodName} value={"I"} />
+        <Text style={styles.foodName} value={""} />
         </View>
       </View>
       <Text style={styles.description} value={props.description}/>
       <View style={styles.bottom}>
-        <Text value={`$ ${(props.price/100).toFixed(2)}`} />
+        <Text value={`$ ${(props.price).toFixed(2)}`} />
         <View>
         <Button title={"Add to cart"} containerStyle={styles.button}/>
         </View>
