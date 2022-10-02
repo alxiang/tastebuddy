@@ -7,7 +7,7 @@ function MenuFilter() {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState([]);
     const [items, setItems] = useState([
-      {label: 'Spicy', value: 'spicy'},
+      {label: 'Not spicy', value: 'not spicy'},
       {label: 'Gluten-Free', value: 'gluten-free'},
       {label: 'Vegan', value: 'vegan'},
       {label: 'Dairy', value: 'dairy'}
@@ -19,9 +19,7 @@ function MenuFilter() {
         // flex: 1,
         // alignItems: 'center',
         // justifyContent: 'center',
-        // paddingHorizontal: 15,
-        // height: 10,
-        // width: 20
+        paddingHorizontal: 15,
         zIndex: 999
       }}>
         <DropDownPicker
@@ -35,9 +33,14 @@ function MenuFilter() {
           theme="LIGHT"
           multiple={true}
           mode="BADGE"
-          badgeDotColors={["#e76f51", "#00b4d8", "#e9c46a", "#e76f51", "#8ac926", "#00b4d8", "#e9c46a"]}
+          badgeDotColors={["#E02214", "#8cdefa", "#e0c170", "#50a343"]}
           containerStyle={{width: 200}}        
           zIndex={1000}
+          textStyle={{fontSize: 12}}
+        //   onChangeValue={(value) => {
+        //         foodState.flatMap(())
+        //     }
+        //   }
         />
       </View>
     );
