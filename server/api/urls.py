@@ -9,8 +9,8 @@ urlpatterns = [
     path("login/", login.login),
     path("signup/", login.signup),
 
-    path("restaurant/<str:id>/", restaurants.get_restaurant),
-    path("menu/<str:id>/", restaurants.get_menus_for_restaurant),
+    path("restaurant/<str:restaurant_id>/", restaurants.get_restaurant),
+    path("menu/<str:restaurant_id>/", restaurants.get_menus_for_restaurant),
 
     path("food/<str:menu_id>/", order.get_foods_for_menu),
     path("orders/<str:user_id>/", order.order),

@@ -17,9 +17,9 @@ def QR_rest(request):
 
 # Restaurant ID in request
 @api_view(["GET"])
-def get_restaurant(request, id):
+def get_restaurant(request, restaurant_id):
     data = {}
-    restaurant_data = Restaurant.objects.get(id=id)
+    restaurant_data = Restaurant.objects.get(id=restaurant_id)
     if restaurant_data:
         data = model_to_dict(
             restaurant_data,
@@ -30,11 +30,11 @@ def get_restaurant(request, id):
 
 # Restaurant ID in request
 @api_view(["GET"])
-def get_menus_for_restaurant(request, id):
+def get_menus_for_restaurant(request, restaurant_id):
     data = {
         "0": []
     }
-    menus = list(Menu.objects.all().filter(restaurant_id=id))
+    menus = list(Menu.objects.all().filter(restaurant_id=restaurant_id))
     if menus:
         for menu in menus:
             data["0"].append(
