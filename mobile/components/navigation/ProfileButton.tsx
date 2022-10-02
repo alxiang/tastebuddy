@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { Image, StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
 import Pressable from '../building-blocks/Pressable'
 
 type ProfileButtonProps = {
@@ -16,6 +17,7 @@ const ProfileButton: FC<ProfileButtonProps> = ({ onPress }) => {
 
 const styles = StyleSheet.create({
   image: {
+    color: Colors.orange,
     height: 25,
     width: 25,
   },

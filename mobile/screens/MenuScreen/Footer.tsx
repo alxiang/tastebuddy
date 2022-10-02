@@ -18,7 +18,7 @@ const Footer: FC<FooterProps> = ({ onPressCart, onPressGetCheck }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
+    marginVertical: 20,
     marginHorizontal: 8,
     flexDirection: 'row',
     justifyContent: 'space-between',

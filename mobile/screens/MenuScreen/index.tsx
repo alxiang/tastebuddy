@@ -9,15 +9,11 @@ import Footer from './Footer'
 import Menu from './Menu'
 
 const MenuScreen: FC<StackScreenProps<LoggedInStackParamList>> = ({ navigation }) => {
-  const hr = <View style={styles.hr} />
-
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Header onPressProfile={() => navigation.navigate('UserProfile')} />
-        {hr}
+        <Header />
         <Menu />
-        {hr}
         <Footer />
       </View>
     </SafeAreaView>
@@ -27,7 +23,7 @@ const MenuScreen: FC<StackScreenProps<LoggedInStackParamList>> = ({ navigation }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 15,
+    marginTop: 10,
     marginHorizontal: 10,
   },
   hr: {

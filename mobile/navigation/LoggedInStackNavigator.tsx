@@ -22,7 +22,7 @@ function LoggedInStackNavigator() {
       })}
     >
       <Stack.Screen name="Menu" component={MenuScreen} />
-      <Stack.Screen name="UserProfile" component={UserProfileScreen} />
+      <Stack.Screen name="UserProfile" component={UserProfileScreen} options={{ headerRight: () => null }} />
     </Stack.Navigator>
   )
 }
