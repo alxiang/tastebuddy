@@ -17,14 +17,26 @@ taste_engine = TasteEngine()
 def get_foods_for_menu(request, menu_id, user_id):
     data = {"0": []}
     foods = list(Food.objects.all().filter(menu_id=menu_id))
+
+    
     
     if foods:
+        scores_per_food = {}
+        for food in foods:
+            scores_per_food[food.name] = taste_engine.compute_score_for_food(
+                retrieve_user_food_history(user_id), 
+                (food.name, food.ingredients)
+            )
+        # Normalize the scores to [0, 1]
+        max_score = max(scores_per_food.values())
+        scores_per_food = {k: v/max_score for k, v in scores_per_food.items()}
+
         for food in foods:
             serializer = FoodSerializer(food)
             food_data = serializer.data
             
             # inject score per menu item
-            food["affinity"] = taste_engine.compute_score_for_food(retrieve_user_food_history(user_id), (food.name, food.ingredients))
+            food["affinity"] = scores_per_food[food.name]
 
             data["0"].append(food_data)
 
