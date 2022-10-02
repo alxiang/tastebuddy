@@ -1,14 +1,11 @@
 
 import json
-from uuid import UUID, uuid4
 
-from api.models import Food, Menu, Restaurant, User
-from django.forms.models import model_to_dict
-from django.http import JsonResponse
-from django.shortcuts import render
+from api.models import FoodOrder, Order, UserOrder
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
 
 @api_view(['PATCH'])
 def post_ratings(request): 

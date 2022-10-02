@@ -1,5 +1,3 @@
-from uuid import UUID
-
 from api.models import Food, FoodOrder, UserOrder
 from django.http import JsonResponse
 from ml.TasteEngine import TasteEngine
@@ -7,6 +5,7 @@ from ml.utils import retrieve_user_food_history
 from rest_framework.decorators import api_view
 
 taste_engine = TasteEngine()
+
 
 @api_view(["GET"])
 def get_order_history(request, user_id):
@@ -17,12 +16,12 @@ def get_order_history(request, user_id):
     if len(user_orders) == 0:
         return JsonResponse(user_order_history)
 
-    for user_order in user_orders: 
+    for user_order in user_orders:
 
         user_order_history[user_order.uuid] = {
             "created": user_order.created,
             "reviews": user_order.reviews,
-            "foods": {}
+            "foods": {},
         }
         food_orders = FoodOrder.objects.get(user_order_id=user_order.id)
         for food_order in food_orders:
@@ -35,9 +34,9 @@ def get_order_history(request, user_id):
                 "price": food.price,
                 "special_notes": food.special_notes,
                 "special_request": food_order.special_request,
-                "rating": food_order.rating
+                "rating": food_order.rating,
             }
-    
+
     return JsonResponse(user_order_history)
 
 

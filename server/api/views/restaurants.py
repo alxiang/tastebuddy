@@ -1,14 +1,8 @@
 # Scan QR code, get rest
-import json
-from uuid import UUID, uuid4
-
-from api.models import Food, Menu, Restaurant, User
+from api.models import Menu, Restaurant
 from django.forms.models import model_to_dict
 from django.http import JsonResponse
-from django.shortcuts import render
-from rest_framework import status
 from rest_framework.decorators import api_view
-from rest_framework.response import Response
 
 
 def QR_rest(request):
@@ -31,9 +25,7 @@ def get_restaurant(request, restaurant_id):
 # Restaurant ID in request
 @api_view(["GET"])
 def get_menus_for_restaurant(request, restaurant_id):
-    data = {
-        "0": []
-    }
+    data = {"0": []}
     menus = list(Menu.objects.all().filter(restaurant_id=restaurant_id))
     if menus:
         for menu in menus:
@@ -44,4 +36,3 @@ def get_menus_for_restaurant(request, restaurant_id):
                 )
             )
     return JsonResponse(data)
-
