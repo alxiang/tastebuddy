@@ -52,19 +52,11 @@ class TasteEngine(abc.ABC):
         Returns: flavor profile dict and cuisine profile dict
         """
 
-        # TODO: actually retrieve this later
-        food_history = [
-            ("Charred Octopus", "roasted garlic white bean puree, piquillo peppers, cherry tomatoes, avocado", 4/5),
-            ("Lobster Bisque", "black truffle, melted leeks, lobster chunk", 4/5),
-            ("Grilled NY Strip Steak", "truffle french fries, grilled asparagus, green peppercorn sauce", 3/5),
-            ("Mushrooms", "", 2/5),
-            ("Seafood Pappardelle", "lobster, shrimp, scallops, peas, rustic tomatoes, brandy-lobster sauce", 5/5),
-        ]
-        reviews = [tup[2] for tup in food_history]
+        reviews = [tup[2] for tup in user_food_history]
 
         ## Embed the foods
         food_strings = [
-            f"{tup[0]}: {tup[1]}" for tup in food_history
+            f"{tup[0]}: {tup[1]}" for tup in user_food_history
         ]
         food_embeddings = self.model.encode(food_strings)
 
@@ -99,7 +91,7 @@ class TasteEngine(abc.ABC):
         for k in cuisine_profile:
             cuisine_profile[k] /= max_score
 
-        return [flavor_profile, cuisine_profile]
+        return {"flavor_profile": flavor_profile, "cuisine_profile": cuisine_profile}
         
 
     def compute_score_for_menu(self, user, menu):

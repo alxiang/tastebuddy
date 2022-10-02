@@ -47,5 +47,7 @@ def get_taste_profile(request, user_id):
     # each user order corresponds to one time the user ordered
     # at the restaurannt
     user_food_history = retrieve_user_food_history(user_id)
-    taste_profile = taste_engine.compute_taste_profile_for_user(user_food_history)
+    taste_profile = {}
+    if len(user_food_history) > 0:
+        taste_profile = taste_engine.compute_taste_profile_for_user(user_food_history)
     return JsonResponse(taste_profile)
