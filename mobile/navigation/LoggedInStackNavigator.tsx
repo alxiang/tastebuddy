@@ -7,6 +7,7 @@ import BackButton from '../components/navigation/BackButton'
 import HeaderTitle from '../components/navigation/HeaderTitle'
 import Colors from '../constants/Colors'
 import ProfileButton from '../components/navigation/ProfileButton'
+import CartScreen from '../screens/CartScreen'
 
 const Stack = createNativeStackNavigator<LoggedInStackParamList>()
 
@@ -23,6 +24,7 @@ function LoggedInStackNavigator() {
     >
       <Stack.Screen name="Menu" component={MenuScreen} />
       <Stack.Screen name="UserProfile" component={UserProfileScreen} options={{ headerRight: () => null }} />
+      <Stack.Screen name="Cart" component={CartScreen} />
     </Stack.Navigator>
   )
 }
