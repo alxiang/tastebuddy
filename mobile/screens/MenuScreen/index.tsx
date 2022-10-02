@@ -14,7 +14,7 @@ const MenuScreen: FC<StackScreenProps<LoggedInStackParamList>> = ({ navigation }
       <View style={styles.container}>
         <Header />
         <Menu />
-        <Footer />
+        <Footer onPressCart={() => navigation.navigate('Cart')} />
       </View>
     </SafeAreaView>
   )
