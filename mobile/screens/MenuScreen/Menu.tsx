@@ -40,9 +40,9 @@ const Menu: FC<MenuProps> = () => {
     const sections: any = {}
     for (const food of foods) {
       if (sections.hasOwnProperty(food.section)) {
-        sections[food.section].push(food)
+        sections[food.section].push({active: true,...food})
       } else {
-        sections[food.section] = [food]
+        sections[food.section] = [{active: true,...food}]
       }
     }
     return sections
