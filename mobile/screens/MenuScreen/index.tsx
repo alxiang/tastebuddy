@@ -9,18 +9,13 @@ import Footer from './Footer'
 import Menu from './Menu'
 
 const MenuScreen: FC<StackScreenProps<LoggedInStackParamList>> = ({ navigation }) => {
-
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <Header />
         <Menu />
       </View>
-      <Footer onPressCart={function (): void {
-          throw new Error('Function not implemented.')
-        } } onPressGetCheck={function (): void {
-          throw new Error('Function not implemented.')
-        } } />
+      <Footer onPressCart={() => navigation.navigate('Cart')} onPressGetCheck={() => navigation.navigate('Review')} />
     </SafeAreaView>
   )
 }

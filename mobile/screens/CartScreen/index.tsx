@@ -30,7 +30,6 @@ const CartScreen: FC<StackScreenProps<LoggedInStackParamList>> = () => {
     tasteBuddy
       .post('orders/', JSON.stringify(order))
       .then((res) => {
-        clearCart()
         setOrderId(res.data.id)
         return res
       })
