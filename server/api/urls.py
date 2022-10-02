@@ -19,5 +19,5 @@ urlpatterns = [
     path("review/", postorder.post_review),
 
     path("orderhistory/", profile.check_order_history),
-    path("tasteprofile/", profile.get_taste_profile),
+    path("tasteprofile/<str>:id", profile.get_taste_profile),
 ]

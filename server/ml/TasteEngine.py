@@ -36,8 +36,6 @@ class TasteEngine(abc.ABC):
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
         self.flavor_embeddings = self.model.encode(FLAVORS)
         self.cuisine_embeddings = self.model.encode([f"{cuisine} Cuisine" for cuisine in CUISINES])
-
-        print(self.flavor_embeddings.shape, self.cuisine_embeddings.shape)
     
     def compute_taste_profile_for_user(self, user_food_history):
         """
