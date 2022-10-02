@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Button } from '../../components/building-blocks'
+import Colors from '../../constants/Colors'
 
 type FooterProps = {
   onPressCart: () => void
@@ -18,8 +19,10 @@ const Footer: FC<FooterProps> = ({ onPressCart, onPressGetCheck }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 20,
-    marginHorizontal: 8,
+    borderTopWidth: 2,
+    borderTopColor: Colors.brown,
+    paddingVertical: 20,
+    paddingHorizontal: 23,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

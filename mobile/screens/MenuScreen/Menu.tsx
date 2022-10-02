@@ -1,18 +1,60 @@
-import React, { FC } from 'react'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
+import MenuSection from './MenuSection'
+import tasteBuddy from '../../api/tasteBuddyApi'
 import { Text } from '../../components/building-blocks'
 import MenuFilter from './MenuFilter'
-import MenuSection from './MenuSection'
+import { Menu as MenuType } from '../../types'
+import UserContext from '../../context/UserContext'
 
 type MenuProps = {}
 
+const HARVEST_ID = "d4912fe9-2aaf-42bb-90a4-b9e443206ef5";
+const USER_ID = "c15834b0-a135-4ae0-8791-919aa66dc784";
+
 const Menu: FC<MenuProps> = () => {
+
+  const { user } = useContext(UserContext);
+  const [foods, setFoods] = useState([])
+  const [menu, setMenu] = useState<MenuType>()
+
+  useEffect(() => {
+    tasteBuddy
+      .get(`menu/${HARVEST_ID}/`)
+      .then((res) => {
+        setMenu(res.data[0][0])
+      })
+      .catch((err) => {
+        console.log('Something went wrong', err.response)
+      })
+  }, [])
+
+  useEffect(() => {
+    if (!!menu) {
+      tasteBuddy
+        .get(`food/${menu.id}/${USER_ID}/`)
+        .then((res) => {
+          console.log(res)
+        })
+    }
+  }, [menu])
+
+  const getSections = (foods: Food[]) => {
+    const sections = {}
+    for (const food of foods) {
+      if (sections.hasOwnProperty(food.section)) {
+
+      } else {
+        // sections[food.section] = ""
+      }
+    }
+  }
+
   return (
     <ScrollView style={styles.container}>
       <MenuSection 
         isRecommended={true}
         name="Recommended Dishes"
-        description="We know you're gonna like these ;)"
         foods={[
           {
             id: "1234",

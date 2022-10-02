@@ -12,9 +12,26 @@ export type FoodOrder = {
   specialRequests: string
 }
 
+export type Menu = {
+  id: UUID
+  menu_type: string
+  restaurant_id: UUID 
+}
+
 export type Order = {
   items: FoodOrder[]
   subtotal: number
+}
+
+export type Food = {
+  id: UUID
+  name: string
+  description: string
+  ingredients: string[]
+  price: number
+  special_notes: string[]
+  restaurant_id: UUID
+  section: string
 }
 
 export type UUID = string
