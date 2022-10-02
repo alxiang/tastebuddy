@@ -31,6 +31,6 @@ def get_foods_for_menu(request, menu_id):
 
 
 # Post cart
-@api_view(["GET"])
-def order(request):
+@api_view(["POST"])
+def post_order(request):
     pass

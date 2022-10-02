@@ -9,7 +9,7 @@ from rest_framework.decorators import api_view
 taste_engine = TasteEngine()
 
 @api_view(["GET"])
-def check_order_history(request, user_id):
+def get_order_history(request, user_id):
     # shows each user order and the foodorders in each user order
     user_orders = list(UserOrder.objects.all().filter(id=user_id))
     user_order_history = {}
