@@ -2,7 +2,7 @@ import React, { createContext, FC, PropsWithChildren, useState } from 'react'
 
 type AuthContextType = {
   loggedIn: boolean
-  signIn: (token: string) => void
+  signIn: () => void
   signOut: () => void
 }
 const AuthContext = createContext<AuthContextType>({} as AuthContextType)
