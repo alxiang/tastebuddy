@@ -17,11 +17,9 @@ def QR_rest(request):
 
 # Restaurant ID in request
 @api_view(["GET"])
-def get_restaurant(request):
+def get_restaurant(request, id):
     data = {}
-    uuid = UUID(request.GET.get("restaurant_id", 0))
-    # print("UUID: " + str(uuid))
-    restaurant_data = Restaurant.objects.get(id=uuid)
+    restaurant_data = Restaurant.objects.get(id=id)
     if restaurant_data:
         data = model_to_dict(
             restaurant_data,
@@ -32,14 +30,18 @@ def get_restaurant(request):
 
 # Restaurant ID in request
 @api_view(["GET"])
-def get_menus_for_restaurant(request):
-    data = {}
-    uuid = UUID(request.GET.get("restaurant_id", 0))
-    menus = Menu.objects.get(restaurant_id=uuid)
+def get_menus_for_restaurant(request, id):
+    data = {
+        "0": []
+    }
+    menus = list(Menu.objects.all().filter(restaurant_id=id))
     if menus:
-        data = model_to_dict(
-            menus,
-            fields=["id", "created", "restaurant_id", "menu_type"],
-        )
+        for menu in menus:
+            data["0"].append(
+                model_to_dict(
+                    menu,
+                    fields=["id", "created", "restaurant_id", "menu_type"],
+                )
+            )
     return JsonResponse(data)
 
