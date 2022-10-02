@@ -3,21 +3,19 @@ from uuid import UUID
 from api.models import Food, FoodOrder, UserOrder
 from django.http import JsonResponse
 from ml.TasteEngine import TasteEngine
+from ml.utils import retrieve_user_food_history
 from rest_framework.decorators import api_view
 
 taste_engine = TasteEngine()
 
 @api_view(["GET"])
-def check_order_history(request):
-    uuid = UUID(request.GET.get("user_id", 0))
-    # status = request.GET.get("closed")
-
+def check_order_history(request, user_id):
     # shows each user order and the foodorders in each user order
-    user_orders = UserOrder.objects.get(id=uuid)
-    if len(user_orders) == 0:
-        return JsonResponse()
-
+    user_orders = list(UserOrder.objects.all().filter(id=user_id))
     user_order_history = {}
+
+    if len(user_orders) == 0:
+        return JsonResponse(user_order_history)
 
     for user_order in user_orders: 
 
@@ -44,22 +42,10 @@ def check_order_history(request):
 
 
 @api_view(["GET"])
-def get_taste_profile(request):
-    uuid = UUID(request.GET.get("user_id", 0))
+def get_taste_profile(request, user_id):
 
     # each user order corresponds to one time the user ordered
     # at the restaurannt
-    user_orders = UserOrder.objects.get(id=uuid)
-    if len(user_orders) == 0:
-        return None
-
-    user_food_history = []
-
-    for user_order in user_orders:
-        food_orders = FoodOrder.objects.get(user_order_id=user_order.id)
-        for food_order in food_orders:
-            food = Food.objects.get(id=food_order.food_id)
-            user_food_history.append((food.name, food.ingredients, food_order.rating))
-
+    user_food_history = retrieve_user_food_history(user_id)
     taste_profile = taste_engine.compute_taste_profile_for_user(user_food_history)
     return JsonResponse(taste_profile)

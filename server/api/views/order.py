@@ -1,19 +1,36 @@
-import json
-from uuid import UUID, uuid4
-
-from api.models import Food, Menu, Restaurant, User
+from api.models import Food
 from django.forms.models import model_to_dict
 from django.http import JsonResponse
-from django.shortcuts import render
-from rest_framework import status
 from rest_framework.decorators import api_view
-from rest_framework.response import Response
 
 
-#Menu ID in request
-def get_foods_for_menu(request): 
-    pass 
+# Menu ID in request
+@api_view(["GET"])
+def get_foods_for_menu(request, menu_id):
+    data = {"0": []}
+    foods = list(Food.objects.all().filter(menu_id=menu_id))
+    if foods:
+        for food in foods:
+            data["0"].append(
+                model_to_dict(
+                    food,
+                    fields=[
+                        "id",
+                        "created",
+                        "name",
+                        "description",
+                        "ingredients",
+                        "price",
+                        "special_notes",
+                        "section",
+                        "menu_id",
+                    ],
+                )
+            )
+    return JsonResponse(data)
 
-#Post cart
-def order(request): 
-    pass 
+
+# Post cart
+@api_view(["GET"])
+def order(request):
+    pass
