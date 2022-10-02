@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
-import { PressableProps, ButtonProps as RNButtonProps, StyleSheet, ViewProps, TextProps } from 'react-native'
+import { PressableProps, ButtonProps as RNButtonProps, StyleSheet, TextProps } from 'react-native'
 import Colors from '../../constants/Colors'
 import Text from './Text'
 import Pressable from './Pressable'
+import { ContainerStyle } from '../../types'
 
-type ButtonProps = { containerStyle?: ViewProps; textStyle?: TextProps } & Pick<PressableProps, 'onPress'> &
+type ButtonProps = { containerStyle?: ContainerStyle; textStyle?: TextProps } & Pick<PressableProps, 'onPress'> &
   Pick<RNButtonProps, 'title'>
 
 const Button: FC<ButtonProps> = ({ containerStyle, onPress, title, textStyle }) => {
