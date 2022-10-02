@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from server.api.models import *
+from api.models import *
 
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,6 +32,6 @@ class FoodOrderSerializer(serializers.ModelSerializer):
         fields = ['id', 'created', 'food_id', 'special_request']
 
 class UserOrderSerializer(serializers.ModelSerializer):
-    class meta:
+    class Meta:
         model = UserOrder
         fields = ['id', 'created', 'restaurant_id', 'user_id', 'order_id', 'rating', 'reviews']
