@@ -4,8 +4,9 @@ import MenuSection from './MenuSection'
 import tasteBuddy from '../../api/tasteBuddyApi'
 import { Text } from '../../components/building-blocks'
 import MenuFilter from './MenuFilter'
-import { Food, Menu as MenuType } from '../../types'
+import { Food, FoodOrder, Menu as MenuType, Order, UUID } from '../../types'
 import UserContext from '../../context/UserContext'
+import CartContext from '../../context/CartContext'
 
 type MenuProps = {}
 
@@ -14,6 +15,7 @@ const USER_ID = 'c15834b0-a135-4ae0-8791-919aa66dc784'
 
 const Menu: FC<MenuProps> = () => {
   const { user } = useContext(UserContext)
+  const { setCart } = useContext(CartContext)
   const [foods, setFoods] = useState<Food[]>([])
   const [menu, setMenu] = useState<MenuType>()
 
@@ -36,29 +38,44 @@ const Menu: FC<MenuProps> = () => {
     }
   }, [menu])
 
+  const addItem = ({ id, price, name }: Food) =>
+    setCart((cart) => {
+      const newPrice = cart.subtotal + price
+      const newItems = [{ foodId: id, name, price, specialRequests: '' }]
+      return { items: newItems, subtotal: newPrice }
+    })
+
   const getSections = (foods: Food[]) => {
     const sections: any = {}
     for (const food of foods) {
       if (sections.hasOwnProperty(food.section)) {
-        sections[food.section].push({active: true,...food})
+        sections[food.section].push({ active: true, ...food })
       } else {
-        sections[food.section] = [{active: true,...food}]
+        sections[food.section] = [{ active: true, ...food }]
       }
     }
     return sections
   }
 
   const applyFilter = (foods: Food[]) => {
-    return foods;
+    return foods
   }
 
   const sections: any = getSections(applyFilter(foods))
-  
+
   return (
     <ScrollView style={styles.container}>
       {sections &&
         Object.keys(sections).map((section) => {
-          return <MenuSection key={section} isRecommended={false} name={section} foods={sections[section]} />
+          return (
+            <MenuSection
+              key={section}
+              isRecommended={false}
+              name={section}
+              foods={sections[section]}
+              addItem={addItem}
+            />
+          )
         })}
     </ScrollView>
   )

@@ -36,26 +36,6 @@ const CartScreen: FC<StackScreenProps<LoggedInStackParamList>> = () => {
       .catch(() => null)
   }
 
-  useEffect(() => {
-    setCart({
-      items: [
-        {
-          foodId: 'fafbf0ba-8629-4869-baad-f2bca39c7619',
-          specialRequests: 'Customer wants to trip balls',
-          price: 4,
-          name: 'mushrooms',
-        },
-        {
-          foodId: 'f97b04a6-f527-4343-aaa2-add06f861e7a',
-          specialRequests: '',
-          price: 69,
-          name: 'No clue',
-        },
-      ],
-      subtotal: 73,
-    })
-  }, [])
-
   return (
     <SafeAreaView>
       <View style={styles.container}>

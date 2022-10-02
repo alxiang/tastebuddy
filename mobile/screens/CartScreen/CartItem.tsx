@@ -15,7 +15,7 @@ const CartItem: FC<CartItemProps> = ({ name, specialRequests, price }) => {
         <Text value={name} style={styles.name} />
         {specialRequests && <Text value={specialRequests} style={styles.specialRequests} />}
       </View>
-      <Text value={`$${price / 100}`} />
+      <Text value={`$${price.toFixed(2)}`} />
     </View>
   )
 }
