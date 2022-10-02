@@ -15,8 +15,8 @@ urlpatterns = [
     path("food/<str:menu_id>/", order.get_foods_for_menu),
     path("orders/", order.post_order),
 
-    path("rating/<str:order_id>/<str:user_id>/", postorder.post_ratings),
-    path("review/<str:order_id>/<str:user_id>/", postorder.post_reviews),
+    path("rating/", postorder.post_ratings),
+    path("review/", postorder.post_reviews),
 
     path("orderhistory/<str:user_id>/", profile.get_order_history),
     path("tasteprofile/<str:user_id>/", profile.get_taste_profile),
